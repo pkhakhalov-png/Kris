@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Кристина Кулакова</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -351,7 +352,7 @@
     <div class="profile-card">
       <div class="profile-avatar">💃</div>
       <div>
-        <div class="profile-name">Привет, Анна 👋</div>
+        <div class="profile-name" id="user-greeting">Привет 👋</div>
         <div class="profile-badge">✦ Подписчик канала</div>
       </div>
     </div>
@@ -608,6 +609,25 @@ function removeFavByKey(key, btn) {
   renderFavs();
 }
 
+
+// ===== TELEGRAM USER =====
+(function() {
+  try {
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+      const user = tg.initDataUnsafe?.user;
+      if (user) {
+        const name = user.first_name || user.username || '';
+        if (name) {
+          const el = document.getElementById('user-greeting');
+          if (el) el.textContent = 'Привет, ' + name + ' 👋';
+        }
+      }
+    }
+  } catch(e) {}
+})();
 
 // ===== SPARKLES =====
 (function() {
