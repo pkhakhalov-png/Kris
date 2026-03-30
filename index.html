@@ -93,10 +93,7 @@ html, body {
   font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.35);
   text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px;
 }
-.hero-name {
-  font-size: 32px; font-weight: 900; color: #fff;
-  letter-spacing: -1.5px; line-height: 1.0;
-}
+/* hero-name defined in animations block */
 .hero-desc {
   font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 6px;
   line-height: 1.5; font-weight: 500;
@@ -138,14 +135,7 @@ html, body {
 .cat-card.wide { grid-column: span 2; min-height: 100px; flex-direction: row; align-items: flex-end; justify-content: space-between; padding: 18px 20px; }
 
 /* Разные фоны для карточек */
-.cat-card.c1 { background: linear-gradient(145deg, #2d1a4a, #1a0a2e); }
-.cat-card.c2 { background: linear-gradient(145deg, #3d1a3a, #1e0a1a); }
-.cat-card.c3 { background: linear-gradient(145deg, #1a2a4a, #0a1228); }
-.cat-card.c4 { background: linear-gradient(145deg, #2a1a3d, #120a20); }
-.cat-card.c5 { background: linear-gradient(145deg, #1a3040, #0a1620); }
-.cat-card.c6 { background: linear-gradient(145deg, #3a1a2a, #1e0a14); }
-.cat-card.c7 { background: linear-gradient(145deg, #1a1a3a, #0a0a1e); }
-.cat-card.c8 { background: linear-gradient(145deg, #7c3aed, #a855f7); }
+/* card colors defined in animations block */
 
 /* Нестандартные радиусы */
 .cat-card.r1 { border-radius: 20px 20px 20px 6px; }
@@ -323,6 +313,58 @@ html, body {
 }
 
 ::-webkit-scrollbar { width: 0; }
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes shimmerHero {
+  0% { transform: translateX(-100%) skewX(-15deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(200%) skewX(-15deg); opacity: 0; }
+}
+@keyframes textShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Переливание градиента на карточках */
+.cat-card.c1 { background: linear-gradient(145deg, #2d1a4a, #1a0a2e, #3d1060, #1a0a2e); background-size: 300% 300%; animation: gradientShift 4s ease infinite; }
+.cat-card.c2 { background: linear-gradient(145deg, #3d1a3a, #1e0a1a, #4a1545, #1e0a1a); background-size: 300% 300%; animation: gradientShift 5s ease infinite; }
+.cat-card.c3 { background: linear-gradient(145deg, #1a2a4a, #0a1228, #1a3060, #0a1228); background-size: 300% 300%; animation: gradientShift 4.5s ease infinite; }
+.cat-card.c4 { background: linear-gradient(145deg, #2a1a3d, #120a20, #351550, #120a20); background-size: 300% 300%; animation: gradientShift 6s ease infinite; }
+.cat-card.c5 { background: linear-gradient(145deg, #1a3040, #0a1620, #1a3555, #0a1620); background-size: 300% 300%; animation: gradientShift 5.5s ease infinite; }
+.cat-card.c6 { background: linear-gradient(145deg, #3a1a2a, #1e0a14, #451530, #1e0a14); background-size: 300% 300%; animation: gradientShift 4s ease infinite; }
+.cat-card.c7 { background: linear-gradient(145deg, #1a1a3a, #0a0a1e, #20104a, #0a0a1e); background-size: 300% 300%; animation: gradientShift 5s ease infinite; }
+.cat-card.c8 { background: linear-gradient(145deg, #7c3aed, #a855f7, #6d28d9, #a855f7); background-size: 300% 300%; animation: gradientShift 3s ease infinite; }
+
+/* Shimmer блик на hero фото */
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.06) 50%,
+    transparent 60%
+  );
+  animation: shimmerHero 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Переливание имени */
+.hero-name {
+  font-size: 32px; font-weight: 900;
+  letter-spacing: -1.5px; line-height: 1.0;
+  background: linear-gradient(90deg, #ffffff, #c084fc, #ffffff, #a78bfa, #ffffff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmer 3s linear infinite;
+}
 </style>
 </head>
 <body>
