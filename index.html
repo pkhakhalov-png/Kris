@@ -10,309 +10,21 @@
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 :root {
-  --bg: #0E0E0E;
-  --card: #161616;
-  --card2: #1E1E1E;
-  --border: #272727;
-  --accent: #A855F7;
-  --text: #FFFFFF;
-  --text2: #777777;
-  --text3: #3A3A3A;
+  --bg: #F0EAE0;
+  --bg2: #E8DFD0;
+  --card: #FAF6F0;
+  --card2: #EDE4D8;
+  --burgundy: #6B1A1A;
+  --burgundy2: #8B2020;
+  --burgundy3: #4A1010;
+  --warm: #C4956A;
+  --warm2: #D4A574;
+  --border: #DDD0C0;
+  --text: #2A1A10;
+  --text2: #7A6050;
+  --text3: #B8A090;
+  --text-inv: #FAF6F0;
 }
-
-html, body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Manrope', sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-.screen { display: none; flex-direction: column; min-height: 100vh; padding-bottom: 80px; }
-.screen.active { display: flex; animation: fadeUp 0.18s ease; }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* TOPBAR */
-.topbar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 18px;
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(14,14,14,0.96);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
-.topbar-logo {
-  font-size: 14px; font-weight: 900;
-  color: var(--text); letter-spacing: -0.3px;
-}
-.topbar-back {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: var(--card2); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; color: var(--text2); cursor: pointer;
-  transition: all 0.15s;
-}
-.topbar-back:active { background: rgba(168,85,247,0.25); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
-.topbar-back.hidden { opacity: 0; pointer-events: none; }
-.topbar-sub {
-  font-size: 11px; font-weight: 600; color: var(--text2);
-}
-
-/* HERO — полная ширина без рамок */
-.hero {
-  position: relative;
-  height: 300px;
-  overflow: hidden;
-  margin: 0;
-  border-radius: 0;
-}
-.hero-img {
-  width: 100%; height: 100%; object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(14,14,14,1) 0%,
-    rgba(14,14,14,0.6) 35%,
-    rgba(100,30,160,0.35) 65%,
-    transparent 100%
-  );
-}
-.hero-body {
-  position: absolute; inset: 0;
-  padding: 24px 20px; display: flex; flex-direction: column; justify-content: flex-end;
-}
-.hero-label {
-  font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.35);
-  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px;
-}
-/* hero-name defined in animations block */
-.hero-desc {
-  font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 6px;
-  line-height: 1.5; font-weight: 500;
-}
-.hero-accent {
-  display: inline-block;
-  background: rgba(168,85,247,0.25); color: #c084fc; border: 1px solid rgba(168,85,247,0.3);
-  border-radius: 6px; padding: 3px 10px;
-  font-size: 10px; font-weight: 900;
-  text-transform: uppercase; letter-spacing: 0.5px;
-  margin-top: 12px;
-}
-
-
-
-/* SECTION */
-.section-label {
-  font-size: 9px; font-weight: 800; color: var(--text3);
-  text-transform: uppercase; letter-spacing: 2px;
-  padding: 16px 16px 10px;
-}
-
-/* РУБРИКИ — без фото, текстовые карточки */
-.cat-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 8px; padding: 0 16px;
-}
-
-.cat-card {
-  border-radius: 20px; overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.15s;
-  padding: 16px 14px 14px;
-  min-height: 140px;
-  display: flex; flex-direction: column; justify-content: space-between;
-}
-.cat-card:active { transform: scale(0.96); }
-.cat-card.wide { grid-column: span 2; min-height: 100px; flex-direction: row; align-items: flex-end; justify-content: space-between; padding: 18px 20px; }
-
-/* Разные фоны для карточек */
-/* card colors defined in animations block */
-
-/* Нестандартные радиусы */
-.cat-card.r1 { border-radius: 20px 20px 20px 6px; }
-.cat-card.r2 { border-radius: 20px 20px 6px 20px; }
-.cat-card.r3 { border-radius: 6px 20px 20px 20px; }
-.cat-card.r4 { border-radius: 20px 6px 20px 20px; }
-.cat-card.r5 { border-radius: 20px 40px 20px 20px; }
-.cat-card.r6 { border-radius: 40px 20px 20px 20px; }
-
-.cat-num {
-  font-size: 48px; font-weight: 900;
-  line-height: 1; letter-spacing: -3px;
-  color: rgba(255,255,255,0.07);
-  position: absolute; top: 8px; right: 12px;
-}
-.cat-card.c8 .cat-num { color: rgba(255,255,255,0.08); }
-
-.cat-top { position: relative; z-index: 1; }
-.cat-icon {
-  font-size: 22px; margin-bottom: 8px;
-  filter: grayscale(1) brightness(1.5);
-}
-.cat-name {
-  font-size: 13px; font-weight: 800; color: var(--text);
-  line-height: 1.25; letter-spacing: -0.2px;
-  text-transform: uppercase;
-}
-.cat-card.c8 .cat-name { color: #fff; }
-
-.cat-bottom { position: relative; z-index: 1; }
-.cat-count-pill {
-  display: inline-flex;
-  background: rgba(255,255,255,0.07);
-  border-radius: 6px; padding: 3px 8px;
-  font-size: 9px; font-weight: 800; color: var(--text2);
-  text-transform: uppercase; letter-spacing: 0.5px;
-}
-.cat-card.c8 .cat-count-pill { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); }
-
-/* Для wide карточки */
-.cat-card.wide .cat-top { flex: 1; }
-.cat-card.wide .cat-name { font-size: 15px; }
-.cat-card.wide .cat-bottom { flex-shrink: 0; text-align: right; }
-
-/* CAT HERO */
-.cat-hero {
-  position: relative; height: 290px; overflow: hidden;
-  border-radius: 0 0 28px 28px;
-}
-.cat-back {
-  position: absolute; top: 16px; left: 16px; z-index: 10;
-  width: 36px; height: 36px; border-radius: 50%;
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.15);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; color: #fff; cursor: pointer;
-  transition: all 0.15s;
-}
-.cat-back:active { background: rgba(168,85,247,0.6); }
-.cat-hero img { width: 100%; height: 100%; object-fit: cover; }
-.cat-hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(14,14,14,1) 0%, rgba(14,14,14,0.1) 60%, transparent 100%);
-}
-.cat-hero-body {
-  position: absolute; bottom: 18px; left: 20px; right: 20px;
-}
-.cat-hero-num {
-  font-size: 56px; font-weight: 900;
-  color: rgba(255,255,255,0.06); line-height: 1;
-  letter-spacing: -4px; margin-bottom: -8px;
-}
-.cat-hero-title {
-  font-size: 24px; font-weight: 900; color: #fff;
-  text-transform: uppercase; line-height: 1.1; letter-spacing: -0.5px;
-}
-.cat-hero-count {
-  display: inline-block;
-  background: rgba(168,85,247,0.3); border: 1px solid rgba(168,85,247,0.4); border-radius: 6px;
-  padding: 3px 10px; font-size: 9px; font-weight: 900;
-  color: #c084fc; margin-top: 10px;
-  text-transform: uppercase; letter-spacing: 1px;
-}
-
-/* POSTS */
-.posts-list { padding: 12px 16px 0; }
-
-.post-item {
-  background: var(--card);
-  border-radius: 16px; margin-bottom: 8px;
-  border: 1px solid var(--border);
-  overflow: hidden; display: flex; align-items: stretch;
-  cursor: pointer; transition: transform 0.15s, border-color 0.15s;
-}
-.post-item:active { transform: scale(0.98); border-color: #a855f7; }
-
-.post-thumb {
-  width: 76px; flex-shrink: 0;
-  background: var(--card2);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 24px; position: relative;
-  filter: grayscale(1);
-}
-.post-play {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(0,0,0,0.4);
-}
-.post-play-btn {
-  width: 28px; height: 28px;
-  background: #a855f7; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; color: #fff; font-weight: 900;
-}
-.post-info { flex: 1; padding: 12px; min-width: 0; }
-.post-tag {
-  font-size: 9px; font-weight: 800; color: #a78bfa;
-  text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 4px;
-}
-.post-title {
-  font-size: 12px; font-weight: 700; color: var(--text);
-  line-height: 1.4; margin-bottom: 5px;
-}
-.post-meta { font-size: 10px; color: var(--text3); display: flex; gap: 7px; align-items: center; }
-.post-dur {
-  background: var(--card2); border-radius: 4px;
-  padding: 2px 6px; font-size: 9px; color: var(--text2); font-weight: 700;
-}
-.post-fav {
-  padding: 12px 12px 12px 0;
-  display: flex; align-items: center;
-  font-size: 16px; cursor: pointer; color: var(--text3);
-  transition: transform 0.15s;
-}
-.post-fav:active { transform: scale(1.3); }
-
-/* BOTTOM NAV — только 2 пункта */
-.bottom-nav {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-  background: rgba(14,14,14,0.98);
-  backdrop-filter: blur(24px);
-  border-top: 1px solid var(--border);
-  display: flex; align-items: center;
-  padding: 10px 0 max(10px, env(safe-area-inset-bottom));
-}
-.nav-item {
-  flex: 1; display: flex; flex-direction: column;
-  align-items: center; gap: 4px;
-  cursor: pointer; padding: 4px 0; transition: all 0.15s;
-}
-.nav-icon-wrap {
-  width: 40px; height: 32px; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; transition: all 0.15s;
-}
-.nav-item.active .nav-icon-wrap {
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
-}
-.nav-label {
-  font-size: 8px; font-weight: 800;
-  text-transform: uppercase; letter-spacing: 0.5px;
-  color: var(--text3); transition: color 0.15s;
-}
-.nav-item.active .nav-label { color: var(--text); }
-.nav-divider {
-  width: 1px; height: 30px; background: var(--border); flex-shrink: 0;
-}
-
-/* EMPTY */
-.fav-empty {
-  display: none; flex-direction: column;
-  align-items: center; justify-content: center;
-  flex: 1; padding: 60px 20px;
-}
-
-::-webkit-scrollbar { width: 0; }
 
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
@@ -328,281 +40,445 @@ html, body {
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-5px) rotate(2deg); }
+}
+@keyframes floatAlt {
+  0%, 100% { transform: translateY(0px) rotate(3deg); }
+  50% { transform: translateY(-6px) rotate(-1deg); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-/* Переливание градиента на карточках */
-.cat-card.c1 { background: linear-gradient(145deg, #2d1a4a, #1a0a2e, #3d1060, #1a0a2e); background-size: 300% 300%; animation: gradientShift 4s ease infinite; }
-.cat-card.c2 { background: linear-gradient(145deg, #3d1a3a, #1e0a1a, #4a1545, #1e0a1a); background-size: 300% 300%; animation: gradientShift 5s ease infinite; }
-.cat-card.c3 { background: linear-gradient(145deg, #1a2a4a, #0a1228, #1a3060, #0a1228); background-size: 300% 300%; animation: gradientShift 4.5s ease infinite; }
-.cat-card.c4 { background: linear-gradient(145deg, #2a1a3d, #120a20, #351550, #120a20); background-size: 300% 300%; animation: gradientShift 6s ease infinite; }
-.cat-card.c5 { background: linear-gradient(145deg, #1a3040, #0a1620, #1a3555, #0a1620); background-size: 300% 300%; animation: gradientShift 5.5s ease infinite; }
-.cat-card.c6 { background: linear-gradient(145deg, #3a1a2a, #1e0a14, #451530, #1e0a14); background-size: 300% 300%; animation: gradientShift 4s ease infinite; }
-.cat-card.c7 { background: linear-gradient(145deg, #1a1a3a, #0a0a1e, #20104a, #0a0a1e); background-size: 300% 300%; animation: gradientShift 5s ease infinite; }
-.cat-card.c8 { background: linear-gradient(145deg, #7c3aed, #a855f7, #6d28d9, #a855f7); background-size: 300% 300%; animation: gradientShift 3s ease infinite; }
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-/* Shimmer блик на hero фото */
+.screen { display: none; flex-direction: column; min-height: 100vh; padding-bottom: 100px; }
+.screen.active { display: flex; animation: fadeUp 0.2s ease; }
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+  background: var(--bg);
+}
 .hero::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(255,255,255,0.06) 50%,
-    transparent 60%
-  );
-  animation: shimmerHero 4s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 2;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%);
+  animation: shimmerHero 5s ease-in-out infinite;
+  pointer-events: none; z-index: 2;
+}
+.hero-img {
+  position: absolute;
+  width: 65%;
+  height: auto;
+  right: 0; top: 0;
+  object-fit: contain;
+  object-position: top right;
+  display: block;
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(240,234,224,1) 35%, rgba(240,234,224,0.4) 60%, transparent 100%),
+              linear-gradient(to top, rgba(240,234,224,1) 0%, transparent 30%);
+}
+.hero-body {
+  position: absolute; inset: 0;
+  padding: 24px 20px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  z-index: 3;
+}
+.hero-label {
+  font-size: 9px; font-weight: 800; color: var(--text2);
+  text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 6px;
+}
+.hero-name {
+  font-size: 34px; font-weight: 900;
+  letter-spacing: -1.5px; line-height: 1.0;
+  background: linear-gradient(90deg, var(--burgundy), var(--warm), var(--burgundy2), var(--warm2), var(--burgundy));
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmer 4s linear infinite;
+}
+.hero-desc {
+  font-size: 12px; color: var(--text2); margin-top: 5px;
+  line-height: 1.5; font-weight: 500;
 }
 
-/* Переливание имени */
-.hero-name {
-  font-size: 32px; font-weight: 900;
-  letter-spacing: -1.5px; line-height: 1.0;
-  background: linear-gradient(90deg, #ffffff, #c084fc, #ffffff, #a78bfa, #ffffff);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: textShimmer 3s linear infinite;
+.section-label {
+  font-size: 9px; font-weight: 800; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 2px;
+  padding: 18px 16px 10px;
 }
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px; padding: 0 16px 20px;
+}
+
+.cat-card {
+  border-radius: 20px; overflow: hidden;
+  position: relative; cursor: pointer;
+  transition: transform 0.15s;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px;
+  border: 1px solid rgba(180,160,140,0.2);
+}
+.cat-card:active { transform: scale(0.96); }
+.cat-card.h1 { min-height: 160px; }
+.cat-card.h2 { min-height: 120px; }
+.cat-card.h3 { min-height: 180px; }
+.cat-card.wide { grid-column: span 2; min-height: 110px; flex-direction: row; align-items: flex-end; justify-content: space-between; }
+
+.cat-card.ra { border-radius: 24px 24px 24px 6px; }
+.cat-card.rb { border-radius: 24px 24px 6px 24px; }
+.cat-card.rc { border-radius: 6px 24px 24px 24px; }
+.cat-card.rd { border-radius: 24px 6px 24px 24px; }
+.cat-card.re { border-radius: 40px 24px 24px 24px; }
+.cat-card.rf { border-radius: 24px 40px 24px 24px; }
+
+.cat-card.col1 { background: linear-gradient(145deg, #6B1A1A, #8B2020, #5A1515, #7A1818); background-size: 300% 300%; animation: gradientShift 5s ease infinite; }
+.cat-card.col2 { background: linear-gradient(145deg, #3D2810, #5A3C18, #3D2810, #4A3015); background-size: 300% 300%; animation: gradientShift 6s ease infinite; }
+.cat-card.col3 { background: linear-gradient(145deg, #C4956A, #D4A574, #B08050, #C4956A); background-size: 300% 300%; animation: gradientShift 4s ease infinite; }
+.cat-card.col4 { background: linear-gradient(145deg, #4A1A1A, #6B2020, #3A1010, #5A1818); background-size: 300% 300%; animation: gradientShift 5.5s ease infinite; }
+.cat-card.col5 { background: linear-gradient(145deg, #2A1A10, #3D2810, #2A1A10, #351E12); background-size: 300% 300%; animation: gradientShift 7s ease infinite; }
+.cat-card.col6 { background: linear-gradient(145deg, #8B3A20, #A04828, #7A2A15, #8B3A20); background-size: 300% 300%; animation: gradientShift 4.5s ease infinite; }
+.cat-card.col7 { background: linear-gradient(145deg, #FAF0E8, #F0E4D4, #FAF0E8, #EDD8C4); background-size: 300% 300%; animation: gradientShift 6s ease infinite; border: 1.5px solid var(--border) !important; }
+.cat-card.col8 { background: linear-gradient(145deg, #5A1A2A, #7A2035, #4A1020, #6B1A2A); background-size: 300% 300%; animation: gradientShift 5s ease infinite; }
+
+.cat-num {
+  position: absolute; top: 8px; right: 12px;
+  font-size: 52px; font-weight: 900; line-height: 1;
+  letter-spacing: -3px; color: rgba(255,255,255,0.06);
+  pointer-events: none;
+}
+.cat-card.col3 .cat-num, .cat-card.col7 .cat-num { color: rgba(0,0,0,0.05); }
+
+.cat-sticker {
+  margin-bottom: 8px;
+  animation: float 3s ease-in-out infinite;
+  display: inline-block;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+}
+.cat-card:nth-child(even) .cat-sticker { animation: floatAlt 3.5s ease-in-out infinite; }
+
+.cat-name {
+  font-size: 12px; font-weight: 800;
+  color: #fff; text-transform: uppercase;
+  line-height: 1.25; letter-spacing: 0.2px;
+}
+.cat-card.col3 .cat-name { color: var(--burgundy3); }
+.cat-card.col7 .cat-name { color: var(--burgundy); }
+.cat-card.wide .cat-sticker { margin-bottom: 0; margin-right: 12px; align-self: center; }
+.cat-card.wide .cat-name { font-size: 14px; }
+
+/* CAT DETAIL */
+.cat-hero {
+  position: relative; height: 290px; overflow: hidden;
+  border-radius: 0 0 32px 32px;
+}
+.cat-hero img { width: 100%; height: 100%; object-fit: cover; }
+.cat-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(42,26,16,0.95) 0%, rgba(42,26,16,0.1) 55%, transparent 100%);
+}
+.cat-back {
+  position: absolute; top: 16px; left: 16px; z-index: 10;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(240,234,224,0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(180,160,140,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; color: var(--burgundy); cursor: pointer;
+  transition: all 0.15s; font-weight: 800;
+}
+.cat-back:active { background: var(--burgundy); color: #fff; }
+.cat-hero-body { position: absolute; bottom: 18px; left: 20px; right: 20px; }
+.cat-hero-num {
+  font-size: 56px; font-weight: 900;
+  color: rgba(255,255,255,0.05); line-height: 1;
+  letter-spacing: -4px; margin-bottom: -8px;
+}
+.cat-hero-title {
+  font-size: 24px; font-weight: 900; color: var(--text-inv);
+  text-transform: uppercase; line-height: 1.1; letter-spacing: -0.5px;
+}
+
+/* POSTS */
+.posts-list { padding: 12px 16px 0; }
+
+.post-item {
+  background: var(--card);
+  border-radius: 16px; margin-bottom: 8px;
+  border: 1px solid var(--border);
+  overflow: hidden; display: flex; align-items: stretch;
+  cursor: pointer; transition: transform 0.15s, border-color 0.15s;
+  box-shadow: 0 2px 12px rgba(107,26,26,0.06);
+}
+.post-item:active { transform: scale(0.98); border-color: var(--burgundy); }
+.post-thumb {
+  width: 76px; flex-shrink: 0; background: var(--card2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; position: relative;
+}
+.post-play {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(107,26,26,0.35);
+}
+.post-play-btn {
+  width: 28px; height: 28px; background: var(--burgundy); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: #fff; font-weight: 900;
+}
+.post-info { flex: 1; padding: 12px; min-width: 0; }
+.post-tag { font-size: 9px; font-weight: 800; color: var(--warm); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 4px; }
+.post-title { font-size: 12px; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 5px; }
+.post-meta { font-size: 10px; color: var(--text3); display: flex; gap: 7px; align-items: center; }
+.post-dur { background: var(--card2); border-radius: 4px; padding: 2px 6px; font-size: 9px; color: var(--text2); font-weight: 700; }
+.post-fav { padding: 12px 12px 12px 0; display: flex; align-items: center; font-size: 18px; cursor: pointer; color: var(--text3); transition: transform 0.15s; }
+.post-fav:active { transform: scale(1.3); }
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(250,246,240,0.98); backdrop-filter: blur(24px);
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 20px max(18px, env(safe-area-inset-bottom));
+  box-shadow: 0 -4px 32px rgba(107,26,26,0.06);
+}
+.nav-item {
+  flex: 1; display: flex; flex-direction: row; align-items: center;
+  justify-content: center; gap: 10px;
+  cursor: pointer; padding: 14px 10px;
+  border-radius: 18px;
+  transition: all 0.15s;
+  border: 1.5px solid transparent;
+}
+.nav-item.active {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+}
+.nav-icon-wrap {
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; transition: all 0.15s; flex-shrink: 0;
+}
+.nav-label {
+  font-size: 13px; font-weight: 800;
+  letter-spacing: -0.3px;
+  color: var(--text2); transition: color 0.15s;
+  white-space: nowrap;
+}
+.nav-item.active .nav-label { color: #fff; }
+.nav-item:not(.active) { background: var(--card2); border-color: var(--border); }
+.nav-divider { display: none; }
+
+.fav-empty { display: none; flex-direction: column; align-items: center; justify-content: center; flex: 1; padding: 60px 20px; }
+::-webkit-scrollbar { width: 0; }
 </style>
 </head>
 <body>
 
-<!-- ГЛАВНАЯ -->
 <div class="screen active" id="screen-home">
-
-  <!-- HERO с фото -->
   <div class="hero">
-    <img class="hero-img" src="https://i.ibb.co/bMXWqLbB/30931.jpg">
+    <img class="hero-img" src="https://i.ibb.co/cXRPXLbD/image.png">
     <div class="hero-overlay"></div>
     <div class="hero-body">
-      <div class="hero-label">Навигация по каналу</div>
+      <div class="hero-label">✦ Навигация по каналу</div>
       <div class="hero-name" id="user-greeting">Кристина<br>Кулакова</div>
-      <div class="hero-desc">Все материалы канала собраны здесь</div>
-      
+      <div class="hero-desc">Все материалы собраны здесь</div>
     </div>
   </div>
 
-  <div class="section-label">Рубрики канала</div>
+  <div class="section-label">Рубрики</div>
 
   <div class="cat-grid">
-
-    <div class="cat-card c1 r1" onclick="openCat('podcasts')">
+    <div class="cat-card col1 h3 ra" onclick="openCat('podcasts')">
       <div class="cat-num">01</div>
-      <div class="cat-top">
-        <div class="cat-icon">◎</div>
-        <div class="cat-name">Подкасты</div>
-      </div>
+      <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="12" r="5"/><path d="M8 12c0 4.4 3.6 8 8 8s8-3.6 8-8"/><line x1="16" y1="20" x2="16" y2="26"/><line x1="12" y1="26" x2="20" y2="26"/></svg></div>
+      <div class="cat-name">Подкасты</div>
     </div>
-
-    <div class="cat-card c2 r2" onclick="openCat('dance')">
+    <div class="cat-card col2 h1 rb" onclick="openCat('dance')">
       <div class="cat-num">02</div>
-      <div class="cat-top">
-        <div class="cat-icon">◈</div>
-        <div class="cat-name">Танц. уроки</div>
-      </div>
+      <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="6" r="2.5"/><path d="M16 9v8"/><path d="M10 13l6 2 6-2"/><path d="M13 17l-2 7"/><path d="M19 17l2 7"/><path d="M11 24l2-1"/><path d="M21 24l-2-1"/></svg></div>
+      <div class="cat-name">Танц. уроки</div>
     </div>
-
-    <div class="cat-card c3 r3" onclick="openCat('diary')">
+    <div class="cat-card col3 h2 rc" onclick="openCat('diary')">
       <div class="cat-num">03</div>
-      <div class="cat-top">
-        <div class="cat-icon">◻</div>
-        <div class="cat-name">Личный дневник</div>
-      </div>
+      <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(90,30,20,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="18" height="24" rx="2"/><line x1="11" y1="11" x2="21" y2="11"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="21" x2="17" y2="21"/><path d="M7 4c0 0-2 0-2 2v20c0 2 2 2 2 2"/></svg></div>
+      <div class="cat-name">Личный дневник</div>
     </div>
-
-    <div class="cat-card c4 r4" onclick="openCat('travel')">
+    <div class="cat-card col4 h3 rd" onclick="openCat('travel')">
       <div class="cat-num">04</div>
-      <div class="cat-top">
-        <div class="cat-icon">◇</div>
-        <div class="cat-name">Путешествия</div>
-      </div>
+      <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 24l5-10 7 4 7-10 5 4"/><path d="M6 8l4 2-1 4"/><circle cx="24" cy="10" r="1" fill="rgba(255,255,255,0.9)"/></svg></div>
+      <div class="cat-name">Путешествия</div>
     </div>
-
-    <div class="cat-card wide c8 r5" onclick="openCat('picks')">
+    <div class="cat-card wide col5 re" onclick="openCat('picks')">
       <div class="cat-num">05</div>
-      <div class="cat-top">
-        <div class="cat-icon">◈</div>
+      <div>
+        <div class="cat-sticker" style="animation:floatAlt 3s ease-in-out infinite"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8h2l1 3h10l-2 8H11L9 11"/><circle cx="13" cy="23" r="1.5"/><circle cx="20" cy="23" r="1.5"/><path d="M5 5h2l1 3"/></svg></div>
         <div class="cat-name">Подборки — одежда, косметика, магазины</div>
       </div>
     </div>
-
-    <div class="cat-card c5 r6" onclick="openCat('reviews')">
+    <div class="cat-card col6 h2 rf" onclick="openCat('reviews')">
       <div class="cat-num">06</div>
-      <div class="cat-top">
-        <div class="cat-icon">◉</div>
-        <div class="cat-name">Разборы учениц</div>
-      </div>
+      <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="7"/><line x1="19" y1="19" x2="26" y2="26"/><line x1="11" y1="14" x2="17" y2="14"/><line x1="14" y1="11" x2="14" y2="17"/></svg></div>
+      <div class="cat-name">Разборы учениц</div>
     </div>
-
-    <div class="cat-card c6 r2" onclick="openCat('offline')">
+    <div class="cat-card col7 h1 ra" onclick="openCat('offline')">
       <div class="cat-num">07</div>
-      <div class="cat-top">
-        <div class="cat-icon">⬡</div>
-        <div class="cat-name">Оффлайн тренировки</div>
-      </div>
+      <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(90,30,20,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="6" r="2.5"/><path d="M10 12h12"/><path d="M12 12v8l4 3 4-3v-8"/><path d="M9 18l3 2"/><path d="M23 18l-3 2"/></svg></div>
+      <div class="cat-name">Оффлайн тренировки</div>
     </div>
-
-    <div class="cat-card wide c7 r3" onclick="openCat('health')">
+    <div class="cat-card wide col8 rb" onclick="openCat('health')">
       <div class="cat-num">08</div>
-      <div class="cat-top">
-        <div class="cat-icon">◎</div>
+      <div>
+        <div class="cat-sticker" style="animation:float 4s ease-in-out infinite"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 27S5 20 5 13a6 6 0 0 1 11-3 6 6 0 0 1 11 3c0 7-11 14-11 14z"/></svg></div>
         <div class="cat-name">Здоровье — питание, уход, спорт</div>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- РУБРИКА -->
 <div class="screen" id="screen-cat">
   <div class="cat-hero" id="cat-hero">
-    <div class="cat-back" onclick="goHome()">←</div>
     <img id="cat-hero-img" src="">
     <div class="cat-hero-overlay"></div>
+    <div class="cat-back" onclick="goHome()">←</div>
     <div class="cat-hero-body">
       <div class="cat-hero-num" id="cat-hero-num"></div>
       <div class="cat-hero-title" id="cat-hero-title"></div>
-      
     </div>
   </div>
   <div class="posts-list" id="posts-list"></div>
 </div>
 
-<!-- ИЗБРАННОЕ -->
 <div class="screen" id="screen-fav">
-  <div class="topbar">
-    <div class="topbar-back hidden"></div>
-    <div class="topbar-logo">Избранное</div>
-    <div style="width:32px"></div>
+  <div style="padding:16px 18px;border-bottom:1px solid var(--border);background:rgba(240,234,224,0.96);backdrop-filter:blur(16px);position:sticky;top:0;z-index:100;">
+    <div style="font-size:15px;font-weight:900;color:var(--text)">Избранное</div>
   </div>
   <div class="fav-empty" id="fav-empty" style="display:flex;">
-    <div style="font-size:36px;opacity:0.1;font-weight:900">♡</div>
+    <div style="font-size:40px">🤍</div>
     <div style="font-size:14px;font-weight:800;color:var(--text2);margin-top:12px">Пока ничего нет</div>
     <div style="font-size:12px;color:var(--text3);margin-top:6px;text-align:center;line-height:1.6">Нажимай ♡ на любой материал<br>и он появится здесь</div>
   </div>
   <div class="posts-list" id="fav-list"></div>
 </div>
 
-<!-- BOTTOM NAV — 2 пункта -->
 <nav class="bottom-nav">
   <div class="nav-item active" id="nav-home" onclick="goHome()">
-    <div class="nav-icon-wrap">⊞</div>
-    <div class="nav-label">Все рубрики</div>
+    <div class="nav-icon-wrap">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:inherit"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+    </div>
+    <div class="nav-label">Главная</div>
   </div>
-  <div class="nav-divider"></div>
   <div class="nav-item" id="nav-fav" onclick="goFav()">
-    <div class="nav-icon-wrap">♡</div>
+    <div class="nav-icon-wrap">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:inherit"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    </div>
     <div class="nav-label">Избранное</div>
   </div>
 </nav>
 
 <script>
-let favorites = JSON.parse(localStorage.getItem('kk_v4') || '[]');
-function saveFavs() { try { localStorage.setItem('kk_v4', JSON.stringify(favorites)); } catch(e) {} }
+let favorites = JSON.parse(localStorage.getItem('kk_v6') || '[]');
+function saveFavs() { try { localStorage.setItem('kk_v6', JSON.stringify(favorites)); } catch(e) {} }
 
-function toggleFav(key, title, tag, date, dur, emoji, link, video, btn) {
-  const idx = favorites.findIndex(f => f.key === key);
-  if (idx === -1) { favorites.push({key,title,tag,date,dur,emoji,link,video}); btn.textContent='♥'; saveFavs(); }
-  else { favorites.splice(idx,1); btn.textContent='♡'; saveFavs();
-    if (document.getElementById('screen-fav').classList.contains('active')) renderFavs(); }
+function toggleFav(key,title,tag,date,dur,emoji,link,video,btn) {
+  const idx=favorites.findIndex(f=>f.key===key);
+  if(idx===-1){favorites.push({key,title,tag,date,dur,emoji,link,video});btn.textContent='🤍';saveFavs();}
+  else{favorites.splice(idx,1);btn.textContent='♡';saveFavs();
+    if(document.getElementById('screen-fav').classList.contains('active'))renderFavs();}
 }
-
 function renderFavs() {
-  const list = document.getElementById('fav-list');
-  const empty = document.getElementById('fav-empty');
-  if (!favorites.length) { empty.style.display='flex'; list.innerHTML=''; return; }
+  const list=document.getElementById('fav-list'),empty=document.getElementById('fav-empty');
+  if(!favorites.length){empty.style.display='flex';list.innerHTML='';return;}
   empty.style.display='none';
-  list.innerHTML = favorites.map(p=>`
-    <div class="post-item" onclick="window.open('${p.link}','_blank')">
-      <div class="post-thumb">${p.video?`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:22px">${p.emoji}</div><div class="post-play"><div class="post-play-btn">▶</div></div>`:`<div>${p.emoji}</div>`}</div>
-      <div class="post-info"><div class="post-tag">${p.tag}</div><div class="post-title">${p.title}</div><div class="post-meta"><span>${p.date}</span>${p.dur?`<span class="post-dur">▶ ${p.dur}</span>`:''}</div></div>
-      <div class="post-fav" onclick="event.stopPropagation();removeFav('${p.key}')">♥</div>
-    </div>`).join('');
+  list.innerHTML=favorites.map(p=>`<div class="post-item" onclick="window.open('${p.link}','_blank')">
+    <div class="post-thumb">${p.video?`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:24px">${p.emoji}</div><div class="post-play"><div class="post-play-btn">▶</div></div>`:`<div>${p.emoji}</div>`}</div>
+    <div class="post-info"><div class="post-tag">${p.tag}</div><div class="post-title">${p.title}</div><div class="post-meta"><span>${p.date}</span>${p.dur?`<span class="post-dur">▶ ${p.dur}</span>`:''}</div></div>
+    <div class="post-fav" onclick="event.stopPropagation();removeFav('${p.key}')">🤍</div>
+  </div>`).join('');
 }
+function removeFav(key){favorites=favorites.filter(f=>f.key!==key);saveFavs();renderFavs();}
 
-function removeFav(key) { favorites=favorites.filter(f=>f.key!==key); saveFavs(); renderFavs(); }
+(function(){try{const tg=window.Telegram?.WebApp;if(tg){tg.ready();tg.expand();}}catch(e){}})();
 
-(function(){
-  try {
-    const tg=window.Telegram?.WebApp;
-    if(tg){tg.ready();tg.expand();}
-  }catch(e){}
-})();
-
-const CATS = {
-  podcasts:{name:'Подкасты',num:'01',count:'12 выпусков',img:'https://i.ibb.co/k2sLzpZT/photo-5314311607309505938-y.jpg',posts:[
-    {title:'Как я перестала бояться камеры',tag:'Подкаст',date:'3 дня назад',dur:'42 мин',emoji:'◎',link:'https://t.me/bykkulakovaa/',video:true},
-    {title:'Деньги и творчество — совместимы ли?',tag:'Подкаст',date:'2 нед назад',dur:'38 мин',emoji:'◎',link:'https://t.me/bykkulakovaa/',video:true},
-    {title:'Отношения и соцсети: где граница?',tag:'Подкаст',date:'1 мес назад',dur:'51 мин',emoji:'◎',link:'https://t.me/bykkulakovaa/',video:true},
+const CATS={
+  podcasts:{name:'Подкасты',num:'01',img:'https://i.ibb.co/k2sLzpZT/photo-5314311607309505938-y.jpg',posts:[
+    {title:'Как я перестала бояться камеры',tag:'Подкаст',date:'3 дня назад',dur:'42 мин',emoji:'🎙️',link:'https://t.me/bykkulakovaa/',video:true},
+    {title:'Деньги и творчество — совместимы ли?',tag:'Подкаст',date:'2 нед назад',dur:'38 мин',emoji:'🎙️',link:'https://t.me/bykkulakovaa/',video:true},
+    {title:'Отношения и соцсети: где граница?',tag:'Подкаст',date:'1 мес назад',dur:'51 мин',emoji:'🎙️',link:'https://t.me/bykkulakovaa/',video:true},
   ]},
-  dance:{name:'Танцевальные уроки',num:'02',count:'1 урок',img:'https://i.ibb.co/JRLW43zN/photo-5314311607309505939-y.jpg',posts:[
-    {title:'Танцевальный урок',tag:'Урок',date:'',dur:null,emoji:'◈',link:'https://t.me/bykkulakovaa/5272',video:false}
+  dance:{name:'Танцевальные уроки',num:'02',img:'https://i.ibb.co/JRLW43zN/photo-5314311607309505939-y.jpg',posts:[
+    {title:'Танцевальный урок',tag:'Урок',date:'',dur:null,emoji:'🩰',link:'https://t.me/bykkulakovaa/5272',video:false}
   ]},
-  diary:{name:'Личный дневник',num:'03',count:'3 поста',img:'https://i.ibb.co/CKXbXMxT/photo-5314311607309505942-y.jpg',posts:[
-    {title:'Пост из дневника',tag:'Дневник',date:'',dur:null,emoji:'◻',link:'https://t.me/bykkulakovaa/5240',video:false},
-    {title:'Пост из дневника',tag:'Дневник',date:'',dur:null,emoji:'◻',link:'https://t.me/bykkulakovaa/5297',video:false},
-    {title:'Пост из дневника',tag:'Дневник',date:'',dur:null,emoji:'◻',link:'https://t.me/bykkulakovaa/5283',video:false},
+  diary:{name:'Личный дневник',num:'03',img:'https://i.ibb.co/CKXbXMxT/photo-5314311607309505942-y.jpg',posts:[
+    {title:'Пост из дневника',tag:'Дневник',date:'',dur:null,emoji:'🌸',link:'https://t.me/bykkulakovaa/5240',video:false},
+    {title:'Пост из дневника',tag:'Дневник',date:'',dur:null,emoji:'🌸',link:'https://t.me/bykkulakovaa/5297',video:false},
+    {title:'Пост из дневника',tag:'Дневник',date:'',dur:null,emoji:'🌸',link:'https://t.me/bykkulakovaa/5283',video:false},
   ]},
-  travel:{name:'Путешествия',num:'04',count:'15 постов',img:'https://i.ibb.co/3yFkZggv/photo-5314311607309505941-y.jpg',posts:[
-    {title:'Бали: где жить, есть и танцевать',tag:'Путешествия',date:'Неделю назад',dur:null,emoji:'◇',link:'https://t.me/bykkulakovaa/1',video:false},
-    {title:'Стамбул за 4 дня — мой маршрут',tag:'Путешествия',date:'1 мес назад',dur:null,emoji:'◇',link:'https://t.me/bykkulakovaa/2',video:false},
+  travel:{name:'Путешествия',num:'04',img:'https://i.ibb.co/3yFkZggv/photo-5314311607309505941-y.jpg',posts:[
+    {title:'Бали: где жить, есть и танцевать',tag:'Путешествия',date:'Неделю назад',dur:null,emoji:'✈️',link:'https://t.me/bykkulakovaa/1',video:false},
+    {title:'Стамбул за 4 дня — мой маршрут',tag:'Путешествия',date:'1 мес назад',dur:null,emoji:'✈️',link:'https://t.me/bykkulakovaa/2',video:false},
   ]},
-  picks:{name:'Подборки',num:'05',count:'31 подборка',img:'https://i.ibb.co/d0C6Rfv4/photo-5314311607309505940-y.jpg',posts:[
-    {title:'Что я ношу этой осенью — 10 вещей',tag:'Одежда',date:'2 дня назад',dur:null,emoji:'◈',link:'https://t.me/bykkulakovaa/3',video:false},
-    {title:'Уход за кожей: мой реальный набор',tag:'Косметика',date:'1 нед назад',dur:null,emoji:'◈',link:'https://t.me/bykkulakovaa/4',video:false},
-    {title:'Магазины Москвы где я реально покупаю',tag:'Шопинг',date:'2 нед назад',dur:null,emoji:'◈',link:'https://t.me/bykkulakovaa/5',video:false},
+  picks:{name:'Подборки',num:'05',img:'https://i.ibb.co/d0C6Rfv4/photo-5314311607309505940-y.jpg',posts:[
+    {title:'Что я ношу этой осенью — 10 вещей',tag:'Одежда',date:'2 дня назад',dur:null,emoji:'🛍️',link:'https://t.me/bykkulakovaa/3',video:false},
+    {title:'Уход за кожей: мой реальный набор',tag:'Косметика',date:'1 нед назад',dur:null,emoji:'🛍️',link:'https://t.me/bykkulakovaa/4',video:false},
+    {title:'Магазины Москвы где я реально покупаю',tag:'Шопинг',date:'2 нед назад',dur:null,emoji:'🛍️',link:'https://t.me/bykkulakovaa/5',video:false},
   ]},
-  reviews:{name:'Разборы учениц',num:'06',count:'1 разбор',img:'https://i.ibb.co/MkBvHhfJ/photo-5314311607309505943-y.jpg',posts:[
-    {title:'Разбор ученицы',tag:'Разбор',date:'',dur:null,emoji:'◉',link:'https://t.me/bykkulakovaa/5294',video:false}
+  reviews:{name:'Разборы учениц',num:'06',img:'https://i.ibb.co/MkBvHhfJ/photo-5314311607309505943-y.jpg',posts:[
+    {title:'Разбор ученицы',tag:'Разбор',date:'',dur:null,emoji:'🔎',link:'https://t.me/bykkulakovaa/5294',video:false}
   ]},
-  offline:{name:'Оффлайн тренировки',num:'07',count:'2 поста',img:'https://i.ibb.co/TMLFbnLC/photo-5314311607309506267-y.jpg',posts:[
-    {title:'Оффлайн тренировка',tag:'Оффлайн',date:'',dur:null,emoji:'⬡',link:'https://t.me/bykkulakovaa/5267',video:false},
-    {title:'Оффлайн тренировка',tag:'Оффлайн',date:'',dur:null,emoji:'⬡',link:'https://t.me/bykkulakovaa/5231',video:false},
+  offline:{name:'Оффлайн тренировки',num:'07',img:'https://i.ibb.co/TMLFbnLC/photo-5314311607309506267-y.jpg',posts:[
+    {title:'Оффлайн тренировка',tag:'Оффлайн',date:'',dur:null,emoji:'💪',link:'https://t.me/bykkulakovaa/5267',video:false},
+    {title:'Оффлайн тренировка',tag:'Оффлайн',date:'',dur:null,emoji:'💪',link:'https://t.me/bykkulakovaa/5231',video:false},
   ]},
-  health:{name:'Здоровье',num:'08',count:'22 поста',img:'https://i.ibb.co/NnCQqk1m/photo-5314311607309506264-y.jpg',posts:[
-    {title:'Как я победила акне — честная история',tag:'Уход',date:'1 нед назад',dur:null,emoji:'◎',link:'https://t.me/bykkulakovaa/0',video:false},
-    {title:'Питание танцора: что я ем на самом деле',tag:'Питание',date:'2 нед назад',dur:null,emoji:'◎',link:'https://t.me/bykkulakovaa/1',video:false},
-    {title:'Восстановление после травмы колена',tag:'Спорт',date:'1 мес назад',dur:null,emoji:'◎',link:'https://t.me/bykkulakovaa/2',video:false},
+  health:{name:'Здоровье',num:'08',img:'https://i.ibb.co/NnCQqk1m/photo-5314311607309506264-y.jpg',posts:[
+    {title:'Как я победила акне — честная история',tag:'Уход',date:'1 нед назад',dur:null,emoji:'🌿',link:'https://t.me/bykkulakovaa/0',video:false},
+    {title:'Питание танцора: что я ем на самом деле',tag:'Питание',date:'2 нед назад',dur:null,emoji:'🌿',link:'https://t.me/bykkulakovaa/1',video:false},
+    {title:'Восстановление после травмы колена',tag:'Спорт',date:'1 мес назад',dur:null,emoji:'🌿',link:'https://t.me/bykkulakovaa/2',video:false},
   ]}
 };
 
-function openCat(key) {
-  const cat=CATS[key]; if(!cat) return;
+function openCat(key){
+  const cat=CATS[key];if(!cat)return;
   const img=document.getElementById('cat-hero-img');
-  img.src=cat.img||''; img.style.display=cat.img?'block':'none';
+  img.src=cat.img||'';img.style.display=cat.img?'block':'none';
   document.getElementById('cat-hero-num').textContent=cat.num;
   document.getElementById('cat-hero-title').textContent=cat.name;
-  
   const list=document.getElementById('posts-list');
   list.innerHTML=cat.posts.map((p,i)=>{
-    const pk=key+'_'+i, faved=favorites.some(f=>f.key===pk);
+    const pk=key+'_'+i,faved=favorites.some(f=>f.key===pk);
     return `<div class="post-item" onclick="window.open('${p.link}','_blank')">
-      <div class="post-thumb">${p.video?`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--card2)">${p.emoji}</div><div class="post-play"><div class="post-play-btn">▶</div></div>`:`<div style="font-size:22px">${p.emoji}</div>`}</div>
+      <div class="post-thumb">${p.video?`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:24px;background:var(--card2)">${p.emoji}</div><div class="post-play"><div class="post-play-btn">▶</div></div>`:`<div style="font-size:24px">${p.emoji}</div>`}</div>
       <div class="post-info"><div class="post-tag">${p.tag}</div><div class="post-title">${p.title}</div><div class="post-meta"><span>${p.date}</span>${p.dur?`<span class="post-dur">▶ ${p.dur}</span>`:''}</div></div>
-      <div class="post-fav" onclick="event.stopPropagation();toggleFav('${pk}','${p.title.replace(/'/g,"\\'")}','${p.tag}','${p.date}','${p.dur||''}','${p.emoji}','${p.link}',${p.video},this)">${faved?'♥':'♡'}</div>
+      <div class="post-fav" onclick="event.stopPropagation();toggleFav('${pk}','${p.title.replace(/'/g,"\\'")}','${p.tag}','${p.date}','${p.dur||''}','${p.emoji}','${p.link}',${p.video},this)">${faved?'🤍':'♡'}</div>
     </div>`;
   }).join('');
   switchScreen('screen-cat');
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
 }
-
-function switchScreen(id) {
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-}
-function goHome() {
-  switchScreen('screen-home');
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  document.getElementById('nav-home').classList.add('active');
-}
-function goFav() {
-  renderFavs(); switchScreen('screen-fav');
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  document.getElementById('nav-fav').classList.add('active');
-}
+function switchScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+function goHome(){switchScreen('screen-home');document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));document.getElementById('nav-home').classList.add('active');}
+function goFav(){renderFavs();switchScreen('screen-fav');document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));document.getElementById('nav-fav').classList.add('active');}
 </script>
 </body>
 </html>
