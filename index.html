@@ -106,14 +106,14 @@ html, body {
   white-space: nowrap;
 }
 .hero-name {
-  font-size: 32px; font-weight: 900;
-  letter-spacing: -1.5px; line-height: 1.0;
+  font-size: 26px; font-weight: 900;
+  letter-spacing: -1px; line-height: 1.0;
   background: linear-gradient(90deg, var(--burgundy), var(--warm), #8B2020, var(--warm2), var(--burgundy));
   background-size: 200% auto;
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: textShimmer 4s linear infinite;
-  margin-bottom: 12px;
+  white-space: nowrap;
 }
 .hero-tagline {
   font-family: "Playfair Display", serif;
@@ -321,11 +321,15 @@ html, body {
     <img class="hero-img" src="https://i.ibb.co/TBLBSGKS/removebg-preview.png">
     <div class="hero-overlay"></div>
     <div class="hero-body">
-      <div class="hero-label">✦ Навигация по каналу</div>
-      <div class="hero-name">Кулакова<br>Кристина</div>
-      <div class="hero-tagline">Добро пожаловать в моё комьюнити</div>
-      <div class="hero-desc">Здесь собрана абсолютная база для твоего роста — и в танцах, и в голове. От личных подкастов и тренировок до ссылок на шмотки, которые выглядят на миллион.</div>
-      <div class="hero-cta">Кликай на то, что нужно тебе прямо сейчас</div>
+      <div>
+        <div class="hero-label">✦ Навигация по каналу</div>
+        <div class="hero-name">Кулакова Кристина</div>
+      </div>
+      <div style="max-width:52%">
+        <div class="hero-tagline">Добро пожаловать в моё комьюнити</div>
+        <div class="hero-desc">Здесь собрана абсолютная база для твоего роста — и в танцах, и в голове. От личных подкастов и тренировок до ссылок на шмотки, которые выглядят на миллион.</div>
+        <div class="hero-cta">Кликай на то, что нужно тебе прямо сейчас</div>
+      </div>
     </div>
   </div>
 
