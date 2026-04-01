@@ -71,8 +71,8 @@ html, body {
 }
 .hero-img {
   position: absolute;
-  right: 0; top: 0;
-  width: 58%; height: 100%;
+  right: 0; top: -40px;
+  width: 58%; height: 110%;
   object-fit: contain;
   object-position: top right;
   z-index: 1;
@@ -81,7 +81,7 @@ html, body {
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(to top, rgba(240,234,224,1) 0%, transparent 15%);
+  background: linear-gradient(to top, rgba(240,234,224,1) 0%, rgba(240,234,224,0.6) 12%, transparent 22%);
   pointer-events: none;
 }
 .hero-body {
@@ -128,7 +128,7 @@ html, body {
 .section-label {
   font-size: 9px; font-weight: 800; color: var(--text3);
   text-transform: uppercase; letter-spacing: 2px;
-  padding: 10px 16px 8px;
+  padding: 4px 16px 6px;
 }
 
 /* GRID */
@@ -323,7 +323,7 @@ html, body {
       </div>
     </div>
   </div>
-  <div class="section-label" style="margin-top:0;padding-top:6px;">Рубрики</div>
+  <div class="section-label" style="margin-top:0;padding-top:4px;padding-bottom:6px;">Рубрики</div>
 
   <div class="cat-grid">
     <div class="cat-card h3 ra col1" onclick="openCat('podcasts')">
