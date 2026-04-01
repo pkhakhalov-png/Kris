@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Кристина Кулакова</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
@@ -15,8 +15,6 @@
   --card: #FAF6F0;
   --card2: #EDE4D8;
   --burgundy: #6B1A1A;
-  --burgundy2: #8B2020;
-  --burgundy3: #4A1010;
   --warm: #C4956A;
   --warm2: #D4A574;
   --border: #DDD0C0;
@@ -67,63 +65,81 @@ html, body {
 /* HERO */
 .hero {
   position: relative;
-  height: 380px;
+  height: 420px;
   overflow: hidden;
   background: var(--bg);
 }
 .hero::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%);
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%);
   animation: shimmerHero 5s ease-in-out infinite;
   pointer-events: none; z-index: 2;
 }
 .hero-img {
   position: absolute;
-  width: 65%;
-  height: auto;
   right: 0; top: 0;
+  height: 100%;
+  width: 68%;
   object-fit: contain;
   object-position: top right;
   display: block;
-  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  z-index: 1;
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 .hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(240,234,224,1) 35%, rgba(240,234,224,0.4) 60%, transparent 100%),
-              linear-gradient(to top, rgba(240,234,224,1) 0%, transparent 30%);
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to top, rgba(240,234,224,1) 0%, transparent 25%);
+  pointer-events: none;
 }
 .hero-body {
   position: absolute; inset: 0;
-  padding: 24px 20px;
+  padding: 28px 20px 20px;
   display: flex; flex-direction: column; justify-content: flex-end;
   z-index: 3;
+  max-width: 56%;
 }
 .hero-label {
   font-size: 9px; font-weight: 800; color: var(--text2);
-  text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 6px;
+  text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 8px;
 }
 .hero-name {
-  font-size: 34px; font-weight: 900;
+  font-size: 32px; font-weight: 900;
   letter-spacing: -1.5px; line-height: 1.0;
-  background: linear-gradient(90deg, var(--burgundy), var(--warm), var(--burgundy2), var(--warm2), var(--burgundy));
+  background: linear-gradient(90deg, var(--burgundy), var(--warm), #8B2020, var(--warm2), var(--burgundy));
   background-size: 200% auto;
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: textShimmer 4s linear infinite;
+  margin-bottom: 12px;
+}
+.hero-tagline {
+  font-family: "Playfair Display", serif;
+  font-size: 15px; font-style: italic; font-weight: 400;
+  color: var(--warm); margin-bottom: 10px; margin-top: 6px;
+  line-height: 1.3;
 }
 .hero-desc {
-  font-size: 12px; color: var(--text2); margin-top: 5px;
-  line-height: 1.5; font-weight: 500;
+  font-size: 11px; color: var(--text2);
+  line-height: 1.7; font-weight: 500;
+  font-family: "Manrope", sans-serif;
+  margin-bottom: 8px;
+}
+.hero-cta {
+  font-family: "Playfair Display", serif;
+  font-size: 12px; font-style: italic;
+  color: var(--burgundy); font-weight: 600;
 }
 
+/* SECTION */
 .section-label {
   font-size: 9px; font-weight: 800; color: var(--text3);
   text-transform: uppercase; letter-spacing: 2px;
   padding: 18px 16px 10px;
 }
 
+/* GRID */
 .cat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -182,8 +198,16 @@ html, body {
   color: #fff; text-transform: uppercase;
   line-height: 1.25; letter-spacing: 0.2px;
 }
-.cat-card.col3 .cat-name { color: var(--burgundy3); }
-.cat-card.col7 .cat-name { color: var(--burgundy); }
+.cat-card.col3 .cat-name { color: #4A1010; }
+.cat-card.col7 .cat-name { color: #6B1A1A; }
+.cat-sub {
+  font-size: 9px; font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-top: 3px; line-height: 1.3;
+}
+.cat-card.col3 .cat-sub { color: rgba(74,16,16,0.5); }
+.cat-card.col7 .cat-sub { color: rgba(107,26,26,0.5); }
 .cat-card.wide .cat-sticker { margin-bottom: 0; margin-right: 12px; align-self: center; }
 .cat-card.wide .cat-name { font-size: 14px; }
 
@@ -200,8 +224,7 @@ html, body {
 .cat-back {
   position: absolute; top: 16px; left: 16px; z-index: 10;
   width: 36px; height: 36px; border-radius: 50%;
-  background: rgba(240,234,224,0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(240,234,224,0.85); backdrop-filter: blur(10px);
   border: 1px solid rgba(180,160,140,0.4);
   display: flex; align-items: center; justify-content: center;
   font-size: 15px; color: var(--burgundy); cursor: pointer;
@@ -221,13 +244,11 @@ html, body {
 
 /* POSTS */
 .posts-list { padding: 12px 16px 0; }
-
 .post-item {
-  background: var(--card);
-  border-radius: 16px; margin-bottom: 8px;
-  border: 1px solid var(--border);
-  overflow: hidden; display: flex; align-items: stretch;
-  cursor: pointer; transition: transform 0.15s, border-color 0.15s;
+  background: var(--card); border-radius: 16px; margin-bottom: 8px;
+  border: 1px solid var(--border); overflow: hidden;
+  display: flex; align-items: stretch; cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s;
   box-shadow: 0 2px 12px rgba(107,26,26,0.06);
 }
 .post-item:active { transform: scale(0.98); border-color: var(--burgundy); }
@@ -259,37 +280,35 @@ html, body {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
   background: rgba(250,246,240,0.98); backdrop-filter: blur(24px);
   border-top: 1px solid var(--border);
-  display: flex; align-items: center; gap: 12px;
-  padding: 14px 20px max(18px, env(safe-area-inset-bottom));
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px max(16px, env(safe-area-inset-bottom));
   box-shadow: 0 -4px 32px rgba(107,26,26,0.06);
 }
 .nav-item {
-  flex: 1; display: flex; flex-direction: row; align-items: center;
-  justify-content: center; gap: 10px;
-  cursor: pointer; padding: 14px 10px;
-  border-radius: 18px;
-  transition: all 0.15s;
-  border: 1.5px solid transparent;
+  flex: 1; display: flex; flex-direction: row;
+  align-items: center; justify-content: center; gap: 9px;
+  cursor: pointer; padding: 14px 12px;
+  border-radius: 16px; transition: all 0.15s;
+  border: 1.5px solid var(--border);
+  background: var(--card2);
 }
 .nav-item.active {
   background: var(--burgundy);
   border-color: var(--burgundy);
 }
 .nav-icon-wrap {
-  width: 22px; height: 22px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 18px; transition: all 0.15s; flex-shrink: 0;
+  flex-shrink: 0;
 }
+.nav-item.active .nav-icon-wrap svg { stroke: #fff; }
+.nav-item:not(.active) .nav-icon-wrap svg { stroke: var(--text2); }
 .nav-label {
-  font-size: 13px; font-weight: 800;
-  letter-spacing: -0.3px;
-  color: var(--text2); transition: color 0.15s;
-  white-space: nowrap;
+  font-size: 13px; font-weight: 800; letter-spacing: -0.3px;
+  color: var(--text2); white-space: nowrap;
 }
 .nav-item.active .nav-label { color: #fff; }
-.nav-item:not(.active) { background: var(--card2); border-color: var(--border); }
-.nav-divider { display: none; }
 
+/* FAV EMPTY */
 .fav-empty { display: none; flex-direction: column; align-items: center; justify-content: center; flex: 1; padding: 60px 20px; }
 ::-webkit-scrollbar { width: 0; }
 </style>
@@ -298,60 +317,84 @@ html, body {
 
 <div class="screen active" id="screen-home">
   <div class="hero">
-    <img class="hero-img" src="https://i.ibb.co/cXRPXLbD/image.png">
+    <img class="hero-img" src="https://i.ibb.co/TBLBSGKS/removebg-preview.png">
     <div class="hero-overlay"></div>
     <div class="hero-body">
       <div class="hero-label">✦ Навигация по каналу</div>
-      <div class="hero-name" id="user-greeting">Кристина<br>Кулакова</div>
-      <div class="hero-desc">Все материалы собраны здесь</div>
+      <div class="hero-name">Кулакова<br>Кристина</div>
+      <div class="hero-tagline">Добро пожаловать в моё комьюнити</div>
+      <div class="hero-desc">Здесь собрана абсолютная база для твоего роста — и в танцах, и в голове. От личных подкастов и тренировок до ссылок на шмотки, которые выглядят на миллион.</div>
+      <div class="hero-cta">Кликай на то, что нужно тебе прямо сейчас</div>
     </div>
   </div>
 
   <div class="section-label">Рубрики</div>
 
   <div class="cat-grid">
-    <div class="cat-card col1 h3 ra" onclick="openCat('podcasts')">
+    <div class="cat-card h3 ra col1" onclick="openCat('podcasts')">
       <div class="cat-num">01</div>
       <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="12" r="5"/><path d="M8 12c0 4.4 3.6 8 8 8s8-3.6 8-8"/><line x1="16" y1="20" x2="16" y2="26"/><line x1="12" y1="26" x2="20" y2="26"/></svg></div>
-      <div class="cat-name">Подкасты</div>
+      <div class="cat-name">ПОДКАСТЫ</div>
+        <div class="cat-sub">МОИ ВЫПУСКИ И ИНТЕРВЬЮ</div>
     </div>
-    <div class="cat-card col2 h1 rb" onclick="openCat('dance')">
-      <div class="cat-num">02</div>
-      <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="6" r="2.5"/><path d="M16 9v8"/><path d="M10 13l6 2 6-2"/><path d="M13 17l-2 7"/><path d="M19 17l2 7"/><path d="M11 24l2-1"/><path d="M21 24l-2-1"/></svg></div>
-      <div class="cat-name">Танц. уроки</div>
-    </div>
-    <div class="cat-card col3 h2 rc" onclick="openCat('diary')">
-      <div class="cat-num">03</div>
-      <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(90,30,20,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="18" height="24" rx="2"/><line x1="11" y1="11" x2="21" y2="11"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="21" x2="17" y2="21"/><path d="M7 4c0 0-2 0-2 2v20c0 2 2 2 2 2"/></svg></div>
-      <div class="cat-name">Личный дневник</div>
-    </div>
-    <div class="cat-card col4 h3 rd" onclick="openCat('travel')">
-      <div class="cat-num">04</div>
-      <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 24l5-10 7 4 7-10 5 4"/><path d="M6 8l4 2-1 4"/><circle cx="24" cy="10" r="1" fill="rgba(255,255,255,0.9)"/></svg></div>
-      <div class="cat-name">Путешествия</div>
-    </div>
-    <div class="cat-card wide col5 re" onclick="openCat('picks')">
-      <div class="cat-num">05</div>
-      <div>
-        <div class="cat-sticker" style="animation:floatAlt 3s ease-in-out infinite"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8h2l1 3h10l-2 8H11L9 11"/><circle cx="13" cy="23" r="1.5"/><circle cx="20" cy="23" r="1.5"/><path d="M5 5h2l1 3"/></svg></div>
-        <div class="cat-name">Подборки — одежда, косметика, магазины</div>
+    <div class="cat-card h1 rb" onclick="openCat('dance')" style="position:relative;overflow:hidden;">
+      <img src="https://i.ibb.co/VYCfFvcn/image.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.1) 60%,transparent 100%);"></div>
+      <div class="cat-num" style="color:rgba(255,255,255,0.1);">02</div>
+      <div style="position:relative;z-index:1;">
+        <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="6" r="2.5"/><path d="M16 9v8"/><path d="M10 13l6 2 6-2"/><path d="M13 17l-2 7"/><path d="M19 17l2 7"/></svg></div>
+        <div class="cat-name">ТРЕНИРОВКИ</div>
+        <div class="cat-sub">БЕСПЛАТНЫЕ ВИДЕО И РАЗБОРЫ</div>
       </div>
     </div>
-    <div class="cat-card col6 h2 rf" onclick="openCat('reviews')">
+    <div class="cat-card h2 rc" onclick="openCat('diary')" style="position:relative;overflow:hidden;">
+      <img src="https://i.ibb.co/CpcrFgzS/IMG-3180.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.45;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.1) 60%,transparent 100%);"></div>
+      <div class="cat-num" style="color:rgba(255,255,255,0.1);">03</div>
+      <div style="position:relative;z-index:1;">
+        <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="18" height="24" rx="2"/><line x1="11" y1="11" x2="21" y2="11"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="21" x2="17" y2="21"/></svg></div>
+        <div class="cat-name">РЕФЛЕКСИЯ</div>
+        <div class="cat-sub">И ЛИЧНОЕ</div>
+      </div>
+    </div>
+    <div class="cat-card h3 rd col4" onclick="openCat('travel')">
+      <div class="cat-num">04</div>
+      <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 24l5-10 7 4 7-10 5 4"/></svg></div>
+      <div class="cat-name">ПУТЕШЕСТВИЯ</div>
+        <div class="cat-sub">ЛОКАЦИИ И ЛАЙФХАКИ</div>
+    </div>
+    <div class="cat-card re wide" onclick="openCat('picks')" style="position:relative;overflow:hidden;">
+      <img src="https://i.ibb.co/JwxBg3pD/image.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.1) 60%,transparent 100%);"></div>
+      <div class="cat-num" style="color:rgba(255,255,255,0.1);">05</div>
+      <div style="position:relative;z-index:1;">
+        <div class="cat-sticker" style="animation:floatAlt 3s ease-in-out infinite"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8h2l1 3h10l-2 8H11L9 11"/><circle cx="13" cy="23" r="1.5"/><circle cx="20" cy="23" r="1.5"/></svg></div>
+        <div class="cat-name">ПОДБОРКИ</div>
+        <div class="cat-sub">ОДЕЖДА, КОСМЕТИКА И МАГАЗИНЫ</div>
+      </div>
+    </div>
+    <div class="cat-card h2 rf col6" onclick="openCat('reviews')">
       <div class="cat-num">06</div>
       <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="7"/><line x1="19" y1="19" x2="26" y2="26"/><line x1="11" y1="14" x2="17" y2="14"/><line x1="14" y1="11" x2="14" y2="17"/></svg></div>
-      <div class="cat-name">Разборы учениц</div>
+      <div class="cat-name">РАЗБОРЫ</div>
+        <div class="cat-sub">ОШИБКИ В БЛОГЕ И ТАНЦАХ</div>
     </div>
-    <div class="cat-card col7 h1 ra" onclick="openCat('offline')">
-      <div class="cat-num">07</div>
-      <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(90,30,20,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="6" r="2.5"/><path d="M10 12h12"/><path d="M12 12v8l4 3 4-3v-8"/><path d="M9 18l3 2"/><path d="M23 18l-3 2"/></svg></div>
-      <div class="cat-name">Оффлайн тренировки</div>
+    <div class="cat-card h1 ra" onclick="openCat('offline')" style="position:relative;overflow:hidden;">
+      <img src="https://i.ibb.co/0R0cJf67/1-FAF97-E7-8511-4-F7-A-8-C9-D-469231-D9-B3-E9.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.1) 60%,transparent 100%);"></div>
+      <div class="cat-num" style="color:rgba(255,255,255,0.1);">07</div>
+      <div style="position:relative;z-index:1;">
+        <div class="cat-sticker"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="6" r="2.5"/><path d="M10 12h12"/><path d="M12 12v8l4 3 4-3v-8"/></svg></div>
+        <div class="cat-name">ОФФЛАЙН</div>
+        <div class="cat-sub">НАШ ПРОЦЕСС И РЕЗУЛЬТАТЫ</div>
+      </div>
     </div>
-    <div class="cat-card wide col8 rb" onclick="openCat('health')">
+    <div class="cat-card rb wide col8" onclick="openCat('health')">
       <div class="cat-num">08</div>
       <div>
         <div class="cat-sticker" style="animation:float 4s ease-in-out infinite"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 27S5 20 5 13a6 6 0 0 1 11-3 6 6 0 0 1 11 3c0 7-11 14-11 14z"/></svg></div>
-        <div class="cat-name">Здоровье — питание, уход, спорт</div>
+        <div class="cat-name">ЗДОРОВЬЕ</div>
+        <div class="cat-sub">ТРАВМЫ И ЛЕЧЕНИЕ</div>
       </div>
     </div>
   </div>
@@ -385,13 +428,13 @@ html, body {
 <nav class="bottom-nav">
   <div class="nav-item active" id="nav-home" onclick="goHome()">
     <div class="nav-icon-wrap">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:inherit"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
     </div>
     <div class="nav-label">Главная</div>
   </div>
   <div class="nav-item" id="nav-fav" onclick="goFav()">
     <div class="nav-icon-wrap">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:inherit"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
     </div>
     <div class="nav-label">Избранное</div>
   </div>
@@ -412,7 +455,7 @@ function renderFavs() {
   if(!favorites.length){empty.style.display='flex';list.innerHTML='';return;}
   empty.style.display='none';
   list.innerHTML=favorites.map(p=>`<div class="post-item" onclick="window.open('${p.link}','_blank')">
-    <div class="post-thumb">${p.video?`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:24px">${p.emoji}</div><div class="post-play"><div class="post-play-btn">▶</div></div>`:`<div>${p.emoji}</div>`}</div>
+    <div class="post-thumb">${p.video?`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:22px">${p.emoji}</div><div class="post-play"><div class="post-play-btn">▶</div></div>`:`<div style="font-size:22px">${p.emoji}</div>`}</div>
     <div class="post-info"><div class="post-tag">${p.tag}</div><div class="post-title">${p.title}</div><div class="post-meta"><span>${p.date}</span>${p.dur?`<span class="post-dur">▶ ${p.dur}</span>`:''}</div></div>
     <div class="post-fav" onclick="event.stopPropagation();removeFav('${p.key}')">🤍</div>
   </div>`).join('');
@@ -422,36 +465,36 @@ function removeFav(key){favorites=favorites.filter(f=>f.key!==key);saveFavs();re
 (function(){try{const tg=window.Telegram?.WebApp;if(tg){tg.ready();tg.expand();}}catch(e){}})();
 
 const CATS={
-  podcasts:{name:'Подкасты',num:'01',img:'https://i.ibb.co/k2sLzpZT/photo-5314311607309505938-y.jpg',posts:[
+  podcasts:{name:'Полезные подкасты',num:'01',img:'https://i.ibb.co/k2sLzpZT/photo-5314311607309505938-y.jpg',posts:[
     {title:'Как я перестала бояться камеры',tag:'Подкаст',date:'3 дня назад',dur:'42 мин',emoji:'🎙️',link:'https://t.me/bykkulakovaa/',video:true},
     {title:'Деньги и творчество — совместимы ли?',tag:'Подкаст',date:'2 нед назад',dur:'38 мин',emoji:'🎙️',link:'https://t.me/bykkulakovaa/',video:true},
     {title:'Отношения и соцсети: где граница?',tag:'Подкаст',date:'1 мес назад',dur:'51 мин',emoji:'🎙️',link:'https://t.me/bykkulakovaa/',video:true},
   ]},
-  dance:{name:'Танцевальные уроки',num:'02',img:'https://i.ibb.co/JRLW43zN/photo-5314311607309505939-y.jpg',posts:[
+  dance:{name:'Бесплатные тренировки',num:'02',img:'https://i.ibb.co/VYCfFvcn/image.jpg',posts:[
     {title:'Танцевальный урок',tag:'Урок',date:'',dur:null,emoji:'🩰',link:'https://t.me/bykkulakovaa/5272',video:false}
   ]},
-  diary:{name:'Личный дневник',num:'03',img:'https://i.ibb.co/CKXbXMxT/photo-5314311607309505942-y.jpg',posts:[
+  diary:{name:'Рефлексия и личное',num:'03',img:'https://i.ibb.co/CpcrFgzS/IMG-3180.jpg',posts:[
     {title:'Пост из дневника',tag:'Дневник',date:'',dur:null,emoji:'🌸',link:'https://t.me/bykkulakovaa/5240',video:false},
     {title:'Пост из дневника',tag:'Дневник',date:'',dur:null,emoji:'🌸',link:'https://t.me/bykkulakovaa/5297',video:false},
     {title:'Пост из дневника',tag:'Дневник',date:'',dur:null,emoji:'🌸',link:'https://t.me/bykkulakovaa/5283',video:false},
   ]},
-  travel:{name:'Путешествия',num:'04',img:'https://i.ibb.co/3yFkZggv/photo-5314311607309505941-y.jpg',posts:[
+  travel:{name:'Путешествия — локации и лайфхаки',num:'04',img:'https://i.ibb.co/VYCfFvcn/image.jpg',posts:[
     {title:'Бали: где жить, есть и танцевать',tag:'Путешествия',date:'Неделю назад',dur:null,emoji:'✈️',link:'https://t.me/bykkulakovaa/1',video:false},
     {title:'Стамбул за 4 дня — мой маршрут',tag:'Путешествия',date:'1 мес назад',dur:null,emoji:'✈️',link:'https://t.me/bykkulakovaa/2',video:false},
   ]},
-  picks:{name:'Подборки',num:'05',img:'https://i.ibb.co/d0C6Rfv4/photo-5314311607309505940-y.jpg',posts:[
+  picks:{name:'Подборки — одежда, косметика и магазины',num:'05',img:'https://i.ibb.co/JwxBg3pD/image.jpg',posts:[
     {title:'Что я ношу этой осенью — 10 вещей',tag:'Одежда',date:'2 дня назад',dur:null,emoji:'🛍️',link:'https://t.me/bykkulakovaa/3',video:false},
     {title:'Уход за кожей: мой реальный набор',tag:'Косметика',date:'1 нед назад',dur:null,emoji:'🛍️',link:'https://t.me/bykkulakovaa/4',video:false},
     {title:'Магазины Москвы где я реально покупаю',tag:'Шопинг',date:'2 нед назад',dur:null,emoji:'🛍️',link:'https://t.me/bykkulakovaa/5',video:false},
   ]},
-  reviews:{name:'Разборы учениц',num:'06',img:'https://i.ibb.co/MkBvHhfJ/photo-5314311607309505943-y.jpg',posts:[
+  reviews:{name:'Разборы подписчиц — ошибки в блоге и танцах',num:'06',img:'https://i.ibb.co/MkBvHhfJ/photo-5314311607309505943-y.jpg',posts:[
     {title:'Разбор ученицы',tag:'Разбор',date:'',dur:null,emoji:'🔎',link:'https://t.me/bykkulakovaa/5294',video:false}
   ]},
-  offline:{name:'Оффлайн тренировки',num:'07',img:'https://i.ibb.co/TMLFbnLC/photo-5314311607309506267-y.jpg',posts:[
+  offline:{name:'Занятия оффлайн — наш процесс и результаты',num:'07',img:'https://i.ibb.co/0R0cJf67/1-FAF97-E7-8511-4-F7-A-8-C9-D-469231-D9-B3-E9.jpg',posts:[
     {title:'Оффлайн тренировка',tag:'Оффлайн',date:'',dur:null,emoji:'💪',link:'https://t.me/bykkulakovaa/5267',video:false},
     {title:'Оффлайн тренировка',tag:'Оффлайн',date:'',dur:null,emoji:'💪',link:'https://t.me/bykkulakovaa/5231',video:false},
   ]},
-  health:{name:'Здоровье',num:'08',img:'https://i.ibb.co/NnCQqk1m/photo-5314311607309506264-y.jpg',posts:[
+  health:{name:'Здоровье — травмы, лечение',num:'08',img:'https://i.ibb.co/NnCQqk1m/photo-5314311607309506264-y.jpg',posts:[
     {title:'Как я победила акне — честная история',tag:'Уход',date:'1 нед назад',dur:null,emoji:'🌿',link:'https://t.me/bykkulakovaa/0',video:false},
     {title:'Питание танцора: что я ем на самом деле',tag:'Питание',date:'2 нед назад',dur:null,emoji:'🌿',link:'https://t.me/bykkulakovaa/1',video:false},
     {title:'Восстановление после травмы колена',tag:'Спорт',date:'1 мес назад',dur:null,emoji:'🌿',link:'https://t.me/bykkulakovaa/2',video:false},
@@ -468,7 +511,7 @@ function openCat(key){
   list.innerHTML=cat.posts.map((p,i)=>{
     const pk=key+'_'+i,faved=favorites.some(f=>f.key===pk);
     return `<div class="post-item" onclick="window.open('${p.link}','_blank')">
-      <div class="post-thumb">${p.video?`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:24px;background:var(--card2)">${p.emoji}</div><div class="post-play"><div class="post-play-btn">▶</div></div>`:`<div style="font-size:24px">${p.emoji}</div>`}</div>
+      <div class="post-thumb">${p.video?`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--card2)">${p.emoji}</div><div class="post-play"><div class="post-play-btn">▶</div></div>`:`<div style="font-size:22px">${p.emoji}</div>`}</div>
       <div class="post-info"><div class="post-tag">${p.tag}</div><div class="post-title">${p.title}</div><div class="post-meta"><span>${p.date}</span>${p.dur?`<span class="post-dur">▶ ${p.dur}</span>`:''}</div></div>
       <div class="post-fav" onclick="event.stopPropagation();toggleFav('${pk}','${p.title.replace(/'/g,"\\'")}','${p.tag}','${p.date}','${p.dur||''}','${p.emoji}','${p.link}',${p.video},this)">${faved?'🤍':'♡'}</div>
     </div>`;
