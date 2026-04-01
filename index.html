@@ -65,62 +65,59 @@ html, body {
 /* HERO */
 .hero {
   position: relative;
-  height: 500px;
+  height: 380px;
   overflow: hidden;
   background: var(--bg);
 }
 .hero-img {
   position: absolute;
   right: 0; top: 0;
-  height: 100%;
-  width: 58%;
+  width: 55%; height: 100%;
   object-fit: contain;
   object-position: top right;
-  display: block;
   z-index: 1;
-  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(to top, rgba(240,234,224,1) 0%, transparent 20%);
+  background: linear-gradient(to top, rgba(240,234,224,1) 0%, transparent 18%);
   pointer-events: none;
 }
 .hero-body {
-  position: absolute; inset: 0;
-  z-index: 3;
+  position: absolute; inset: 0; z-index: 3;
+  padding: 20px 18px;
   display: flex; flex-direction: column;
   justify-content: space-between;
-  padding: 22px 18px 20px;
-  max-width: 100%;
 }
+.hero-top { display: flex; flex-direction: column; }
 .hero-label {
   font-size: 9px; font-weight: 800; color: var(--text2);
   text-transform: uppercase; letter-spacing: 2.5px;
+  margin-bottom: 4px;
 }
 .hero-name {
-  font-size: 34px; font-weight: 900;
-  letter-spacing: -1.5px; line-height: 1.0;
+  font-size: 32px; font-weight: 900;
+  letter-spacing: -1px; line-height: 1.05;
   background: linear-gradient(90deg, var(--burgundy), var(--warm), #8B2020, var(--warm2), var(--burgundy));
   background-size: 200% auto;
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: textShimmer 4s linear infinite;
-  margin-top: 4px;
 }
 .hero-bottom {
-  display: flex; flex-direction: column; gap: 7px;
-  max-width: 52%;
+  display: flex; flex-direction: column; gap: 6px;
+  width: 50%;
 }
 .hero-tagline {
   font-family: "Playfair Display", serif;
-  font-size: 14px; font-style: italic; font-weight: 400;
+  font-size: 13px; font-style: italic;
   color: var(--warm); line-height: 1.3;
 }
 .hero-desc {
   font-size: 11px; color: var(--text2);
-  line-height: 1.65; font-weight: 500;
-  font-family: "Manrope", sans-serif;
+  line-height: 1.6; font-weight: 500;
 }
 .hero-cta {
   font-family: "Playfair Display", serif;
@@ -315,7 +312,7 @@ html, body {
     <img class="hero-img" src="https://i.ibb.co/TBLBSGKS/removebg-preview.png">
     <div class="hero-overlay"></div>
     <div class="hero-body">
-      <div>
+      <div class="hero-top">
         <div class="hero-label">✦ Навигация по каналу</div>
         <div class="hero-name">Кулакова<br>Кристина</div>
       </div>
