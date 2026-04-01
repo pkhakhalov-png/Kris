@@ -78,15 +78,13 @@ html, body {
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 2;
-  background:
-    linear-gradient(to right, rgba(240,234,224,1) 38%, rgba(240,234,224,0.7) 55%, rgba(240,234,224,0.1) 75%),
-    linear-gradient(to top, rgba(240,234,224,1) 0%, transparent 15%);
+  background: linear-gradient(to top, rgba(240,234,224,1) 0%, transparent 30%);
   pointer-events: none;
 }
 .hero-body {
-  position: relative; z-index: 3;
-  padding: 22px 18px 18px;
-  display: flex; flex-direction: column; gap: 8px;
+  position: absolute; inset: 0; z-index: 3;
+  padding: 0 18px 14px;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 6px;
 }
 .hero-label {
   font-size: 9px; font-weight: 800; color: var(--text2);
@@ -101,7 +99,7 @@ html, body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: textShimmer 4s linear infinite;
-  padding-top: 0;
+
 }
 .hero-tagline {
   font-family: "Playfair Display", serif;
