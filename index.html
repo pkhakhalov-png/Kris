@@ -81,15 +81,15 @@ html, body {
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(to top, rgba(240,234,224,1) 0%, transparent 20%);
+  background: linear-gradient(to top, rgba(240,234,224,1) 0%, transparent 15%);
   pointer-events: none;
 }
 .hero-body {
   position: absolute; inset: 0;
   z-index: 3;
-  padding: 16px 18px 14px;
+  padding: 76px 18px 14px;
   display: flex; flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 .hero-label {
   font-size: 9px; font-weight: 800; color: var(--text2);
@@ -323,7 +323,7 @@ html, body {
       </div>
     </div>
   </div>
-  <div class="section-label">Рубрики</div>
+  <div class="section-label" style="margin-top:0;padding-top:6px;">Рубрики</div>
 
   <div class="cat-grid">
     <div class="cat-card h3 ra col1" onclick="openCat('podcasts')">
